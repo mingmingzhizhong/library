@@ -1,0 +1,34 @@
+<!--pages/lecture/lecture.wxml-->
+
+
+<view class="container">
+  <view class="banner">
+    <image mode='widthFix' src="http://199.231.208.242/{{lecture.banner}}"></image>
+  </view>
+  <view class="lecture_detail">
+    <view class="lec_head">
+      <view class="lec_title">
+        <text>{{lecture.title}}</text>
+      </view>
+      <view>
+        <text>主讲人：{{lecture.presenter}}</text>
+      </view>
+      <view>
+        <text>讲座时间：{{lecture.date}}</text>
+      </view>
+      <view class="lec_location">
+        <text>讲座地点：{{lecture.location}}</text>
+      </view>
+    </view>
+   
+    <view class="intro">
+      <import src="../../wxParse/wxParse.wxml"/>
+      <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+    </view>
+  </view>
+  <block wx:if="{{can_sign==0}}">
+    <view class="sign_wrap">
+      <button type="primary" bindtap="sign"> 报名 </button>
+    </view>
+  </block>
+</view>

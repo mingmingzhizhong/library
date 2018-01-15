@@ -1,0 +1,8 @@
+<!--pages/personal/qrcode.wxml-->
+<!--pages/personal/join.wxml-->
+<view class="container">
+  <view class="qrcode">
+    <image class="proimg" src="{{qrcode}}" mode="widthFix"/>  
+  </view>
+</view>
+

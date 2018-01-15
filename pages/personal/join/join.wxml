@@ -1,0 +1,27 @@
+<!--pages/personal/joined/join.wxml-->
+<view class="container">
+  <view class="tabitems"> 
+      <view class="lecture_list" wx:for="{{lectures}}" wx:for-item="lecture">
+        <block wx:if="{{lecture.is_expired==0}}">
+          <view class="list">
+            <view class="proImg">
+              <navigator url="/pages/lectures/lecture?nid={{lecture.nid}}" open-type="redirect" hover-class="other-navigator-hover">
+                <image class="proimg" src="{{lecture.img_url}}" mode="widthFix"/>
+              </navigator>
+            </view>
+            <view class="lecture_text">
+              <view class="proname">
+                {{lecture.title}}
+              </view>
+              <view class="prolevel">
+                主讲人：{{lecture.presenter}}
+              </view>
+              <view class="prolevel">
+                讲座时间：{{lecture.date}}
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>    
+  </view>
+</view>

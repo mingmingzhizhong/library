@@ -1,0 +1,36 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/personal/personal",
+    "pages/personal/join/join",
+    "pages/personal/sign/sign",
+    "pages/personal/join",
+    "pages/personal/sign",
+    "pages/lecture/lecture",
+    "pages/personal/qrcode"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#e97b39",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "pages/images/lectures.png",
+        "selectedIconPath": "pages/images/lectures-active.png",
+        "text": "讲座列表"
+      },
+      {
+        "pagePath": "pages/personal/personal",
+        "iconPath": "pages/images/person.png",
+        "selectedIconPath": "pages/images/person-active.png",
+        "text": "个人中心"
+      }
+    ]
+  }
+}

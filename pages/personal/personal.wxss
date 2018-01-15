@@ -1,0 +1,49 @@
+/* pages/personal/personal.wxss */
+
+.wrap{
+    font-size: 15px;
+    background: #ffffff;
+    width: 100%;
+}
+.head{
+    padding: 20rpx;
+    height: 150px;
+    width: 100%;
+    background: #41cbd5;
+}
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 30rpx 0;
+  border-radius: 50%;
+}
+.userinfo-nickname {
+  color: #ffffff;
+}
+.items{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom:1px solid #dddddd;
+  display: flex;
+  flex-direction: row;
+  padding-left: 20px;
+  padding-right: 20px;
+  justify-content: space-between;
+}
+.itemImgwrap{
+  width: 10%;
+}
+.itemImg{
+  width: 20px;
+}
+.itemName{
+  width: 80%;
+}
+.itemToDetail{
+  width: 10%;
+}

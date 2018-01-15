@@ -1,0 +1,40 @@
+/* pages/lecture/lecture.wxss */
+@import "/wxParse/wxParse.wxss";
+.banner {
+  width: 100%;
+}
+.banner image {
+  width: 100%;
+}
+.lecture_detail {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10rpx;
+  text-align: left;
+  margin-bottom: 120rpx;
+}
+.lec_head, .lec_title {
+  border-bottom: 2px solid #dddddd;
+  padding-bottom: 20rpx;
+  margin-bottom:20rpx;
+}
+.lec_title {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+.lec_location {
+  word-break: break-all;
+}
+.intro {
+  text-indent: 2em;
+}
+.sign_wrap {
+  position: fixed;
+  bottom: 30rpx;
+  background: yellow;
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+}

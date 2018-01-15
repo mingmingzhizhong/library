@@ -1,0 +1,106 @@
+/**index.wxss**/
+
+/*头部tab切换*/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+.tab{
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.tabitem1,.tabitem2{
+  width: 43%;
+  height: 30px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.tabitems .tab1{
+  display: none;
+}
+.tabitems .tab1.active{
+  display: block;
+}
+
+.tabitems .tab2{
+  display: none;
+}
+.tabitems .tab2.active{
+  display: block;
+}
+.tabitems {
+  width: 100%;
+}
+.tabitem1 .active, .tabitem2 .active {
+  padding-bottom: 5px;
+  border-bottom: 3px solid #cc0001;
+}
+/*讲座列表页面样式*/
+.lecture_list{
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+  width: 100%;
+}
+.list {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #dddddd;
+}
+.proImg {
+  width: 120rpx;
+  margin-right: 20rpx;
+}
+.proimg{
+  width: 100%;
+}
+.lecture_text {
+  width: calc(100% - 140px);
+  font-size: 16px;
+}
+.proname {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;  
+}
+.prolevel {
+  font-size: 16px;
+}
+.proright{
+    width: 20rpx;
+    padding-right: 5px;
+    box-sizing: border-box;
+}
+.number {
+  width: 25px;
+}

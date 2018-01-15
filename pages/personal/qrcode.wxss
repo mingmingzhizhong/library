@@ -1,0 +1,4 @@
+/* pages/personal/qrcode.wxss */
+.proimg {
+  margin-top: 200rpx;
+}
