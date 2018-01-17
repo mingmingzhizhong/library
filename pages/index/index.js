@@ -7,9 +7,9 @@ Page({
     "lectures": [],
     "siteIP": 'http://199.231.208.242',
     "openID": '',
-  /* 分别获取当前讲座及历史讲座
+  /* 分别获取当前讲座及历史讲座*/
     "clectures": [],
-    "hlectures": [],*/
+    "hlectures": [],
     "tabArr": { curHdIndex: 0, curBdIndex: 0 }
   },
   //事件处理函数
@@ -46,7 +46,7 @@ Page({
       }
     })
 
-    /*分别获取当前讲座及历史讲座
+    /*分别获取当前讲座及历史讲座 */
      //当前讲座
     wx.request({
       url: 'http://199.231.208.242/ljctest1/current_lectures',
@@ -64,7 +64,7 @@ Page({
 
     //历史讲座
     wx.request({
-      url: 'http://199.231.208.242/ljctest1/current_lectures',
+      url: 'http://199.231.208.242/ljctest1/history_lectures',
       header: {
         'content-type': 'application/json' // 默认值
       },
@@ -76,7 +76,7 @@ Page({
         console.log(hlectures)
       }
     })
-    */
+   
     //调用微信登录接口
     wx.login({
       success: function (res) {

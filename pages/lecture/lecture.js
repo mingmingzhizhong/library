@@ -1,4 +1,6 @@
 // pages/lecture/lecture.js
+var Base64 = require("../../utils/js-base64/base64.modified.js")
+var common = require("../../utils/common.js")  
 Page({
 
   /**
@@ -7,7 +9,10 @@ Page({
   data: {
     lecture:{},
     can_sign: 0,
-    openid:''
+    siteIP: '',
+    
+    openID: '', 
+    message: ''
   },
 
   /**
@@ -15,27 +20,39 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+    this.setData({
+      siteIP: common.siteIP
+    })
   //  var can_sign=options.id
     var that = this
     var openid = options.openid
     var WxParse = require('../../wxParse/wxParse.js');
     wx.request({
-      url: 'http://199.231.208.242/ljctest1/lecture/' + options.id,
+      url: 'http://199.231.208.242/ljctest1/lecture/',
+      data: {
+        nid: options.id,
+        openID: options.openid
+      },
+      method: 'GET',
       header: {
-        'content-type': 'application/json' // 默认值
+        'content-type': 'application/x-www-form-urlencoded',
+        "Authorization": "Basic " + Base64.encode(options.openid + ":" + options.openid)
       },
       success: function (res) {
+        console.log(res)
         var lecture = res.data
         var article = res.data[0].introduce;
         WxParse.wxParse('article', 'html', article, that, 5);
         that.setData({
           lecture: res.data[0],
           can_sign:res.data[0].is_expired,
-          openid:openid
+          openID:openid
         })
         console.log(res.data[0])
       }
     })
+    
+
   /*  that.setData({
       can_sign: can_sign
     })*/
@@ -45,17 +62,34 @@ Page({
     console.log(e)
     
     wx.request({
-      url: "http://199.231.208.242/ljctest1/order_lecture/" + e.target.id + "/" + e.target.dataset.openid,
-      data: {},
+      url: "http://199.231.208.242/ljctest1/order_lecture/" ,
+      data: {
+        nid: e.target.id,
+        openID: e.target.dataset.openid,
+      },
       method: 'GET', 
       success: function (res) {
         console.log(res)
         console.log("已点击报名")
-        wx.showToast({
-          title: '已成功报名',
-          icon: 'success',
-          duration: 2000
+        var state = res.data.error
+        wx.showModal({
+          title: '',
+          content: res.data.message,
+          showCancel:false
         })
+      /*  if(state==0){
+          wx.showToast({
+            title: '已成功报名',
+            icon: 'success',
+            duration: 2000
+          })
+        }elseif(state==1){
+          wx.showToast({
+            title: '您已报名',
+            duration: 2000
+          })
+        }*/
+        
       },
       fail:function(){
         console.log("报名失败")

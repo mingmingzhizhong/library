@@ -1,13 +1,13 @@
 <!--index.wxml-->
 <view class="container">
   <view class="tab" bindtap="tabchange">
-    <view class="tabitem1"><text class="{{tabArr.curHdIndex=='0'? 'active' : ''}}"  id="tab-hd01" data-id="0">即开讲座</text></view>
+    <view class="tabitem1"><text class="{{tabArr.curHdIndex=='0'? 'active' : ''}}"  id="tab-hd01" data-id="0">当前讲座</text></view>
     <view class="tabitem2"><text class="{{tabArr.curHdIndex=='1'? 'active' : ''}}"  id="tab-hd02" data-id="1">历史讲座</text></view>
   </view>
   <view class="tabitems">
     <view class="tab1 {{tabArr.curBdIndex=='0'? 'active' : ''}}">  
-      <view class="lecture_list" wx:for="{{lectures}}" wx:for-item="lecture">
-        <block wx:if="{{lecture.is_expired==0}}">
+      <view class="lecture_list" wx:for="{{clectures}}" wx:for-item="lecture">
+        
           <view class="list">
             <view class="proImg">
                 <image class="proimg" src="http://199.231.208.242/{{lecture.img_url}}" mode="widthFix"/>
@@ -27,7 +27,7 @@
               <image mode="widthFix" class="number" src="../images/number.png"/>{{lecture.number}}
             </view>
           </view>
-        </block>
+       
       </view>    
 
 
@@ -36,8 +36,8 @@
     </view>
     
     <view class="tab2 {{tabArr.curBdIndex=='1'? 'active' : ''}}">
-      <view class="lecture_list" wx:for="{{lectures}}" wx:for-item="lecture">
-        <block wx:if="{{lecture.is_expired==1}}">
+      <view class="lecture_list" wx:for="{{hlectures}}" wx:for-item="lecture">
+       
           <view class="list">
             <view class="proImg">
               <navigator url="/pages/lecture/lecture" id="{{lecture.nid}}" open-type="redirect" hover-class="other-navigator-hover">
@@ -57,7 +57,7 @@
               </view>
             </view>
           </view>
-        </block>
+        
       </view>      
     </view>
 
