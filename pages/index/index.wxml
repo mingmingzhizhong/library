@@ -10,12 +10,10 @@
         <block wx:if="{{lecture.is_expired==0}}">
           <view class="list">
             <view class="proImg">
-              <navigator url="/pages/lecture/lecture" id="{{lecture.nid}}" open-type="redirect" hover-class="other-navigator-hover">
                 <image class="proimg" src="http://199.231.208.242/{{lecture.img_url}}" mode="widthFix"/>
-              </navigator>
             </view>
             <view class="lecture_text">
-              <view class="proname" bindtap='showdetails' id="{{lecture.nid}}">
+              <view class="proname" bindtap='showdetails' id="{{lecture.nid}}" data-openid="{{openID}}">
                 {{lecture.title}}
               </view>
               <view class="prolevel">

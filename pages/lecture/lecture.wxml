@@ -28,7 +28,7 @@
   </view>
   <block wx:if="{{can_sign==0}}">
     <view class="sign_wrap">
-      <button type="primary" bindtap="sign"> 报名 </button>
+      <button type="primary" bindtap="sign" id="{{lecture.nid}}" data-openid="{{openid}}"> 报名 </button>
     </view>
   </block>
 </view>

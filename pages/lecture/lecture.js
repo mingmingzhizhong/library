@@ -5,14 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-  /*  lecture:{img_url: "../images/banner.jpg", 
-    title: "讲座主题一", 
-    presenter: "主讲人1", 
-    date: "2018-01-20", 
-    address: "讲座地点", 
-    introduce: "简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容"}, */
     lecture:{},
-    can_sign: 0
+    can_sign: 0,
+    openid:''
   },
 
   /**
@@ -22,6 +17,7 @@ Page({
     console.log(options)
   //  var can_sign=options.id
     var that = this
+    var openid = options.openid
     var WxParse = require('../../wxParse/wxParse.js');
     wx.request({
       url: 'http://199.231.208.242/ljctest1/lecture/' + options.id,
@@ -34,9 +30,10 @@ Page({
         WxParse.wxParse('article', 'html', article, that, 5);
         that.setData({
           lecture: res.data[0],
-          can_sign:res.data[0].is_expired
+          can_sign:res.data[0].is_expired,
+          openid:openid
         })
-        
+        console.log(res.data[0])
       }
     })
   /*  that.setData({
@@ -45,12 +42,26 @@ Page({
   },
 
   sign: function(e){
-    console.log("已点击报名")
-    wx.showToast({
-      title: '已成功报名',
-      icon: 'success',
-      duration: 2000
+    console.log(e)
+    
+    wx.request({
+      url: "http://199.231.208.242/ljctest1/order_lecture/" + e.target.id + "/" + e.target.dataset.openid,
+      data: {},
+      method: 'GET', 
+      success: function (res) {
+        console.log(res)
+        console.log("已点击报名")
+        wx.showToast({
+          title: '已成功报名',
+          icon: 'success',
+          duration: 2000
+        })
+      },
+      fail:function(){
+        console.log("报名失败")
+      }
     })
+    
   },
   /**
    * 用户点击右上角分享

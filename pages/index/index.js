@@ -5,24 +5,8 @@ const app = getApp()
 Page({
   data: {
     "lectures": [],
-  /*  "lectures": [
-    { id:1,img_url: "../images/wangtianyi.jpg", title: "主题1", presenter: "主讲人1", number:15, date: "2018-01-20", is_expired: 0, join: 1 },
-    { id: 2, img_url: "../images/wangtianyi.jpg", title: "主题2", presenter: "主讲人2", number: 22, date: "2018-01-20", is_expired: 0, join: 0 },
-    { id: 3, img_url: "../images/wangtianyi.jpg", title: "主题3", presenter: "主讲人3", number: 35, date: "2018-01-20", is_expired: 0, join: 0 },
-    { id: 4, img_url: "../images/wangtianyi.jpg", title: "主题4", presenter: "主讲人4", number: 15, date: "2018-01-20", is_expired: 0, join: 1 },
-    { id: 5, img_url: "../images/wangtianyi.jpg", title: "主题5", presenter: "主讲人5", number: 26, date: "2018-01-20", is_expired: 0, join: 1 },
-    { id: 6, img_url: "../images/wangtianyi.jpg", title: "主题6", presenter: "主讲人6", number: 34, date: "2018-01-20", is_expired: 0, join: 0 },
-    { id: 7, img_url: "../images/wangtianyi.jpg", title: "主题7", presenter: "主讲人7", number: 25, date: "2018-01-20", is_expired: 0, join: 1 },
-    { id: 8, img_url: "../images/wangtianyi.jpg", title: "主题8", presenter: "主讲人8", number: 23, date: "2018-01-20", is_expired: 0, join: 0 },
-    { id: 9, img_url: "../images/wangtianyi.jpg", title: "主题9", presenter: "主讲人9", number: 42, date: "2018-01-20", is_expired: 0, join: 1 },
-    { id: 10, img_url: "../images/wangtianyi.jpg", title: "过主题1", presenter: "主讲人1", number: 31, date: "2018-01-20", is_expired: 1, join: 0 },
-    { id: 11, img_url: "../images/wangtianyi.jpg", title: "过主题2", presenter: "主讲人2", number: 54, date: "2018-01-20", is_expired: 1, join: 1 },
-    { id: 12, img_url: "../images/wangtianyi.jpg", title: "过主题3", presenter: "主讲人3", number: 44, date: "2018-01-20", is_expired: 1, join: 0 },
-    { id: 13, img_url: "../images/wangtianyi.jpg", title: "过主题4", presenter: "主讲人4", number: 42, date: "2018-01-20", is_expired: 1, join: 1 },
-    { id: 14, img_url: "../images/wangtianyi.jpg", title: "过主题5", presenter: "主讲人5", number: 24, date: "2018-01-20", is_expired: 1, join: 0 },
-    { id: 15, img_url: "../images/wangtianyi.jpg", title: "过主题6", presenter: "主讲人6", number: 28, date: "2018-01-20", is_expired: 1, join: 1 },
-    { id: 16, img_url: "../images/wangtianyi.jpg", title: "过主题7", presenter: "主讲人7", number: 15, date: "2018-01-20", is_expired: 1, join: 1 },
-  ],*/
+    "siteIP": 'http://199.231.208.242',
+    "openID": '',
   /* 分别获取当前讲座及历史讲座
     "clectures": [],
     "hlectures": [],*/
@@ -43,7 +27,10 @@ Page({
   },
   onLoad: function () {
     var that = this
-    
+    const APP_ID = '';//输入小程序appid  
+    const APP_SECRET = '';//输入小程序app_secret  
+    var OPEN_ID = ''//储存获取到openid  
+    var SESSION_KEY = ''//储存获取到session_key 
     //获取全部讲座
     wx.request({
       url: 'http://199.231.208.242/ljctest1/lectures',
@@ -90,15 +77,45 @@ Page({
       }
     })
     */
-
+    //调用微信登录接口
+    wx.login({
+      success: function (res) {
+        var OPEN_ID = ''//储存获取到openid  
+        var SESSION_KEY = ''//储存获取到session_key 
+        wx.request({
+          //获取openid接口  
+          url: 'https://api.weixin.qq.com/sns/jscode2session',
+          data: {
+            appid: "wxf4c32217ddcf74ea",
+            secret: "32be3cf7270d1d93a3f1d4aba9c2ea27",
+            js_code: res.code,
+            grant_type: 'authorization_code'
+          },
+          method: 'GET',
+          success: function (res) {
+            console.log(res.data)
+            OPEN_ID = res.data.openid;//获取到的openid  
+            SESSION_KEY = res.data.session_key;//获取到session_key            
+            that.setData({
+              openID: res.data.openid
+            })
+            wx.request({
+              url: 'http://199.231.208.242/ljctest1/lecture/login/' + OPEN_ID,
+              method: 'POST',
+            })
+          }
+        })
+      }
+    })
   },
   showdetails: function (event) {
     var that = this
-    //     console.log(e)
+    console.log(event)
     var id = event.target.id
+    var openid = event.target.dataset.openid
 
     wx.navigateTo({
-      url: '/pages/lecture/lecture?id='+id,
+      url: '/pages/lecture/lecture?id='+id+'&openid='+openid,
     })
   }
 })
