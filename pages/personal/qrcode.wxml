@@ -2,7 +2,11 @@
 <!--pages/personal/join.wxml-->
 <view class="container">
   <view class="qrcode">
-    <image class="proimg" src="{{qrcode}}" mode="widthFix"/>  
+    <image class="proimg" src="{{imagePath}}" bindtap="previewImg" mode="widthFix"/>  
   </view>
+</view>
+<view hidden="{{maskHidden}}" class="mask"></view>
+<view class="canvas-box">
+  <canvas  hidden="{{canvasHidden}}" style="width: 686rpx;height: 686rpx;background:#f1f1f1;" canvas-id="mycanvas"/>
 </view>
 

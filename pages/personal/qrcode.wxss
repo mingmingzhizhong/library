@@ -2,3 +2,27 @@
 .proimg {
   margin-top: 200rpx;
 }
+.qrcode{
+  padding: 32rpx;
+  background-color: #fff;
+  position: relative
+}
+.proimg{
+  width: 650rpx;
+  height: 650rpx;
+  background-color: #f9f9f9;
+}
+.mask{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3; 
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.canvas-box{
+  position: fixed;
+  top:999999rpx;
+  left: 0
+}

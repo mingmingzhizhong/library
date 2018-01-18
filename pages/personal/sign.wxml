@@ -2,17 +2,21 @@
 <view class="container">
   <view class="tabitems"> 
     <view class="head-title">已报名的讲座</view>
-      <view class="lecture_list" wx:for="{{lectures}}" wx:for-item="lecture">
-        <block wx:if="{{lecture.join==0}}">
+      <block wx:if="{{length==0}}">
+        <view class="remind">您还没有报名的讲座，请至“当前讲座”处报名</view>
+      </block>
+      <block wx:wx:else>
+        <view class="lecture_list" wx:for="{{lectures}}" wx:for-item="lecture">
+        
           <view class="list">
             <view class="proImg">
-              <view bindtap='qrcode'>
-                <image class="proimg" src="{{lecture.img_url}}" mode="widthFix"/>
+              <view>
+                <image class="proimg" src="http://199.231.208.242/{{lecture.img_url}}" mode="widthFix"/>
               </view>
             </view>
            
             <view class="lecture_text">
-              <view class="proname">
+              <view class="proname" bindtap='qrcode' id="{{lecture.nid}}" data-title="{{lecture.title}}" data-nickname="{{nickname}}">
                 {{lecture.title}}
               </view>
               <view class="prolevel">
@@ -23,8 +27,9 @@
               </view>
             </view>
           </view>
-        </block>
-      </view>    
+        
+        </view> 
+      </block>   
   </view>
 </view>
 

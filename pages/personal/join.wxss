@@ -9,6 +9,9 @@
   margin-bottom: 20rpx;
   border-bottom: 1px solid #e97b39;
 }
+.remind {
+  text-align: center;
+}
 .lecture_list{
   display: flex;
   flex-direction: column;

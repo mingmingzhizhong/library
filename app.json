@@ -3,18 +3,19 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/personal/personal",
-    "pages/personal/join/join",
-    "pages/personal/sign/sign",
     "pages/personal/join",
     "pages/personal/sign",
     "pages/lecture/lecture",
     "pages/personal/qrcode"
   ],
   "window": {
+    "backgroundColor": "#efeff4",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarTitleText": "讲座预约",
+    "navigationBarBackgroundColor": "#37373b",
+    "navigationBarTextStyle": "light",
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "selectedColor": "#e97b39",

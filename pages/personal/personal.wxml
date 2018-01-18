@@ -5,7 +5,7 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
   </view>
   <view class="personinfo">
-      <view class="items" wx:for="{{person}}" bindtap="itemClick" id="{{index}}">
+      <view class="items" wx:for="{{person}}" bindtap="itemClick" id="{{index}}" data-openid="{{openID}}" data-nickname="{{userInfo.nickName}}">
             
             <view class="itemImgwrap">
                 <image class="itemImg" src="{{item.img}}" mode="widthFix"/>
